@@ -5,6 +5,7 @@ using namespace std;
 int main()
 {
     adminPass ap;
+    regPass rp;
     string pass;
     char choice;
     do
@@ -20,6 +21,23 @@ int main()
                 cout << "Enter the password: ";
                 cin >> pass;
                 if (ap.checkPass(pass)) // This will check the password
+                {
+                    cout << "Cool!!";
+                    break;
+                }
+                else
+                {
+                    cout << "Try Again\n";
+                }
+            }
+        }
+        else if (choice == 'n')
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                cout << "Enter the password: ";
+                cin >> pass;
+                if (rp.check_regPass(pass)) // This will check the password
                 {
                     cout << "Cool!!";
                     break;

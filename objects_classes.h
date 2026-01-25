@@ -11,4 +11,15 @@ private:
 public:
     bool checkPass(std::string pass);
 };
+
+class regPass
+{
+private:
+    std::string rgPass[10];
+    void randomPassword();
+
+public:
+    regPass();
+    bool check_regPass(std::string pass);
+};
 #endif
