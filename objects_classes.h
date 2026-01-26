@@ -17,6 +17,7 @@ class regPass
 private:
     std::string rgPass[10];
     void randomPassword();
+    void fileOpening();
 
 public:
     regPass();

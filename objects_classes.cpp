@@ -1,6 +1,8 @@
 #include <iostream>
 #include <ctime>
 #include <string>
+#include <fstream>
+#include <cstdlib>
 #include "objects_classes.h"
 
 bool adminPass::checkPass(std::string pass)
@@ -43,7 +45,25 @@ void regPass::randomPassword()
     }
 }
 
+void regPass::fileOpening()
+{
+    std::ofstream myfile("Readme.txt");
+    for (int i = 0; i < 10; i++)
+    {
+        myfile << rgPass[i] << std::endl;
+    }
+    myfile.close();
+#ifdef _WIN32 // THis will open the Readme.txt file based on the OS this program is running on
+    system("start Readme.txt");
+#elif __APPLE__
+    system("open Readme.txt");
+#else
+    system("xdg-open Readme.txt");
+#endif
+}
+
 regPass::regPass()
 {
     randomPassword();
+    fileOpening();
 }
