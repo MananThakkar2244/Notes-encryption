@@ -29,7 +29,7 @@ bool regPass::check_regPass(std::string pass)
     return false;
 }
 
-void regPass::randomPassword()
+void regPass::randomPassword() // This will create 10 random passwords
 {
     srand(time(0));
     std::string characters = "qwertyuiopasdfghjklzxcvbnm1234567890";
@@ -47,23 +47,50 @@ void regPass::randomPassword()
 
 void regPass::fileOpening()
 {
-    std::ofstream myfile("Readme.txt");
-    for (int i = 0; i < 10; i++)
+    std::ofstream myfile("passwords.txt"); // This will create a file containing all 10 encrypted passwords.
+    for (int i = 0; i < 10; i++)           // Once generated it will edit the orginial file for new ones
     {
-        myfile << rgPass[i] << std::endl;
+        myfile << rot13pass[i] << std::endl;
     }
     myfile.close();
-#ifdef _WIN32 // THis will open the Readme.txt file based on the OS this program is running on
-    system("start Readme.txt");
+
+#ifdef _WIN32 // This will open the passwords.txt file based on the OS this program is running on
+    system("start passwords.txt");
 #elif __APPLE__
-    system("open Readme.txt");
+    system("open passwords.txt");
 #else
-    system("xdg-open Readme.txt");
+    system("xdg-open passwords.txt");
 #endif
+}
+
+void regPass::implementROT13() // This will implement and covert all 10 passwords into ROT13
+{
+    char ch, temp;
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < rgPass[i].length(); j++)
+        {
+            ch = rgPass[i][j];
+            if (ch >= 'a' && ch <= 'z')
+            {
+                temp = ((ch - 'a' + 13) % 26) + 'a';
+            }
+            else if (ch >= 'A' && ch <= 'Z')
+            {
+                temp = ((ch - 'A' + 13) % 26) + 'A';
+            }
+            else
+            {
+                temp = ch;
+            }
+            rot13pass[i] += temp;
+        }
+    }
 }
 
 regPass::regPass()
 {
     randomPassword();
+    implementROT13();
     fileOpening();
 }

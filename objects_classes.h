@@ -15,9 +15,10 @@ public:
 class regPass
 {
 private:
-    std::string rgPass[10];
+    std::string rgPass[10], rot13pass[10]; // The converted passwords will be stored in ROT13
     void randomPassword();
     void fileOpening();
+    void implementROT13();
 
 public:
     regPass();
