@@ -1,10 +1,5 @@
-f8k8slyu
-bgbjebro
-mcdpga3x
-owdwdbq1
-qkr2hnfz
-rqhyrzfp
-xy996u0r
-bsx0gxy5
-locf897j
-gdw865u6
+First a file will be created, for example Notes.pdf, now you will change the extension, for example Notes.locked, and this will hide the folder and if a person tries to unhide the folder hw wont be able to and then when the user runs the program and enters the right password it change the extesion of the file/folder to the original one, for example Notes.locked --> Notes.pdf, and once the user opens the filr/folder and stops the program it will rename the file to its locked version.
+This program will regenerate new passwords everytime a user runs it and change it to ROT13 cipher for more security.
+There will only be an admin password which only the creater of the program will be able to access, and i am working on some seceret things which i wont write here but as you read and understand the code it will all make sense.
+
+OFC i am a beginner to C++ and programming as a whole so i want realloy lock it on the OS level rn, so just use this and as soon as i learn the OS level things i will making a new repo for this same program but on an OS level
