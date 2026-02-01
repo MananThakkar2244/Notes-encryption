@@ -88,6 +88,24 @@ void regPass::implementROT13() // This will implement and covert all 10 password
     }
 }
 
+void folder::unlockFolder()
+{
+    rename("Example_Notes.locked", "Example_Notes");
+
+#ifdef _WIN32
+    system("start Example_Notes");
+#elif __APPLE__
+    system("open Example_Notes");
+#else
+    system("xdg-open Example_Notes");
+#endif
+}
+
+void folder::lockFolder()
+{
+    rename("Example_Notes", "Example_Notes.locked");
+}
+
 regPass::regPass()
 {
     randomPassword();

@@ -24,4 +24,11 @@ public:
     regPass();
     bool check_regPass(std::string pass);
 };
+
+class folder
+{
+public:
+    void unlockFolder();
+    void lockFolder();
+};
 #endif

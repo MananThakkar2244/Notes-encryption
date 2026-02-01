@@ -5,9 +5,9 @@ using namespace std;
 int main()
 {
     adminPass ap;
-    regPass rp;
     string pass;
-    char choice;
+    folder f;
+    char choice, q;
     do
     {
         cout << "Are you an ADMIN??";
@@ -20,9 +20,9 @@ int main()
             {
                 cout << "Enter the password: ";
                 cin >> pass;
-                if (ap.checkPass(pass)) // This will check the password
+                if (ap.checkPass(pass)) // This will check the admin password
                 {
-                    cout << "Cool!!";
+                    f.unlockFolder();
                     break;
                 }
                 else
@@ -33,13 +33,20 @@ int main()
         }
         else if (choice == 'n')
         {
+            regPass rp;
             for (int i = 0; i < 3; i++)
             {
                 cout << "Enter the password: ";
                 cin >> pass;
                 if (rp.check_regPass(pass)) // This will check the password
                 {
-                    cout << "Cool!!";
+                    f.unlockFolder();
+                    cout << "Enter 'q' to close the folder: ";
+                    cin >> q;
+                    if (q == 'q')
+                    {
+                        f.lockFolder();
+                    }
                     break;
                 }
                 else
