@@ -41,12 +41,7 @@ int main()
                 if (rp.check_regPass(pass)) // This will check the password
                 {
                     f.unlockFolder();
-                    cout << "Enter 'q' to close the folder: ";
-                    cin >> q;
-                    if (q == 'q')
-                    {
-                        f.lockFolder();
-                    }
+                    f.timer();
                     break;
                 }
                 else

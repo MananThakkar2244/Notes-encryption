@@ -3,7 +3,12 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <chrono>
+#include <thread>
 #include "objects_classes.h"
+
+using namespace std::chrono;
+using namespace std::this_thread;
 
 bool adminPass::checkPass(std::string pass)
 {
@@ -101,11 +106,11 @@ void folder::unlockFolder()
 #endif
 }
 
-void folder::lockFolder()
+void folder::timer()
 {
+    sleep_for(10s);
     rename("Example_Notes", "Example_Notes.locked");
 }
-
 regPass::regPass()
 {
     randomPassword();

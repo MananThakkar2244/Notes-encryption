@@ -25,10 +25,10 @@ public:
     bool check_regPass(std::string pass);
 };
 
-class folder
+class folder // This is a class that locks the targeted folder and unlocks it when the user-entered password is correct
 {
 public:
     void unlockFolder();
-    void lockFolder();
+    void timer();
 };
 #endif
