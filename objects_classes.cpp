@@ -68,7 +68,7 @@ void regPass::fileOpening()
 #endif
 }
 
-void regPass::implementROT13() // This will implement and covert all 10 passwords into ROT13
+void regPass::implementROT13() // This will implement and convert all 10 passwords into ROT13
 {
     char ch, temp;
     for (int i = 0; i < 10; i++)
@@ -93,24 +93,38 @@ void regPass::implementROT13() // This will implement and covert all 10 password
     }
 }
 
-void folder::unlockFolder()
+void folder::unlockFolder(std::string filename)
 {
-    rename("Example_Notes.locked", "Example_Notes");
+    std::string lockedExtension = ".locked";
 
+    if (filename.length() >= lockedExtension.length() &&
+        filename.substr(filename.length() - lockedExtension.length()) == lockedExtension)
+    {
+        std::string originalName = filename.substr(0, filename.length() - lockedExtension.length());
+
+        if (rename(filename.c_str(), originalName.c_str()) == 0)
+        {
 #ifdef _WIN32
-    system("start Example_Notes");
+            system(("start " + originalName).c_str());
 #elif __APPLE__
-    system("open Example_Notes");
+            system(("open " + originalName).c_str());
 #else
-    system("xdg-open Example_Notes");
+            system(("xdg-open " + originalName).c_str());
 #endif
+
+            sleep_for(std::chrono::hours(1));
+
+            std::string relockedName = originalName + lockedExtension;
+            rename(originalName.c_str(), relockedName.c_str());
+        }
+    }
+    else
+    {
+        std::string lockedName = filename + lockedExtension;
+        rename(filename.c_str(), lockedName.c_str());
+    }
 }
 
-void folder::timer()
-{
-    sleep_for(10s);
-    rename("Example_Notes", "Example_Notes.locked");
-}
 regPass::regPass()
 {
     randomPassword();

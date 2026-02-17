@@ -28,7 +28,6 @@ public:
 class folder // This is a class that locks the targeted folder and unlocks it when the user-entered password is correct
 {
 public:
-    void unlockFolder();
-    void timer();
+    void unlockFolder(std::string filename);
 };
 #endif

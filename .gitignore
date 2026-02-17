@@ -1,7 +1,5 @@
 .vscode/
 *.out
 *.o
-*.exe
 app
-passwords.txt
-Example_Notes.locked
+NotesLocker.exe
