@@ -63,3 +63,6 @@ CREATED BY
 
 Manan
 C++ Student Project
+IMPORTANT note:-
+this is created with the help of AI ,i.e 30% of coding is done by AI at the end and 70% of coding 
+is done by me from the start
